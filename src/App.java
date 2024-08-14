@@ -2,9 +2,15 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         Carro basico = new Carro("Basico", TipoCombustivel.GASOLINA, 10, 55);
+    
+        //Criação de carro esportivo que utiliza gasolina, consome 6 km/it e tem capacidade 45 litros.
+        Carro esportivo = new Carro("Esportivo", TipoCombustivel.GASOLINA, 6, 45);
 
         System.out.println("Tipos de veiculos:");
         System.out.println(basico);
+
+        //Adição do carro esportivo em tipos de veículos
+        System.out.println(esportivo);
 
         System.out.println("\n\n----------------");
         System.out.println("\nAbastencendo carro basico com gasolina");
