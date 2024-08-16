@@ -7,7 +7,13 @@ public class App {
         Carro esportivo = new Carro("Esportivo", TipoCombustivel.GASOLINA, 6, 45);
 
         //Criação de carro UTILIÁRIO que utiliza diesel, consome 5 km/it e tem capacidade 70 litros.
+        //Aqui foi necessário atualizar a classe TipoCombustivel.java para aceitar o Diesel.
         Carro utilitario = new Carro("Utilitário", TipoCombustivel.DIESEL, 5, 70);
+
+        //Criação de carro SUV que utiliza gasolina, consome 8 km/it e tem capacidade 55 litros.
+        Carro suv = new Carro("SUV", TipoCombustivel.GASOLINA, 8, 55);
+        Motor flex = new Motor("FLEX", 8);
+
         System.out.println("Tipos de veiculos:");
         System.out.println(basico);
 
