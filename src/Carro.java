@@ -3,11 +3,35 @@ public class Carro {
     private String modelo;
     private Motor motor;
     private TanqueCombustivel tanque;
+    private int consumoMinimo;
+    private boolean flex;
 
     public Carro(String modelo, TipoCombustivel tipoCombustivel, int consumoMotor, int capacidadeTanque) {
         this.modelo = modelo;
         motor = new Motor(tipoCombustivel, consumoMotor);
         tanque = new TanqueCombustivel(tipoCombustivel, capacidadeTanque);
+    }
+
+    // Construtor para carro com Motor FLEX.
+    public Carro(String modelo, TipoCombustivel tipoCombustivel, int consumo, int capacidadeTanque, boolean flex) {
+        this.modelo = modelo;
+        this.motor = new Motor(tipoCombustivel, consumo);
+        this.tanque = new TanqueCombustivel(tipoCombustivel, capacidadeTanque);
+        this.flex = flex;
+    }
+
+    // Construtor para motores FLEX com consumo específico para gasolina e álcool
+    public Carro(String modelo, int consumoMotorGasolina, int consumoMotorAlcool, int capacidadeTanque) {
+        this.modelo = modelo;
+        this.motor = new Motor(consumoMotorGasolina, consumoMotorAlcool);
+        this.tanque = new TanqueCombustivel(TipoCombustivel.FLEX, capacidadeTanque); // Assumindo tanque FLEX
+    }
+
+
+    public Carro(String modelo, TipoCombustivel tipoCombustivel, int consumo, int consumoMinimo, int capacidadeTanque) {
+        this.modelo = modelo;
+        this.motor = new Motor(tipoCombustivel, consumo, consumoMinimo);
+        this.tanque = new TanqueCombustivel(tipoCombustivel, capacidadeTanque);
     }
 
     public String getModelo() {
