@@ -1,6 +1,5 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        Motor FLEX;
 
         Carro basico = new Carro("Basico", TipoCombustivel.GASOLINA, 10, 55);
     
@@ -20,7 +19,7 @@ public class App {
         //gasolina consome 8 km/it e quando usa álcool consumo 6km/it e o tanque é FLex e tem 65 litros de capacidade.
         //Para o carro ser FLEX, em construtor na classe "Carro"foi criado um novo construtor para 
         // adicionar o tipo do tanque.
-        Carro SUVFlex = new Carro("SUV Flex", TipoCombustivel.FLEX, 8, 6, 65);
+        Carro SUVFlex = new Carro("SUV Flex", TipoCombustivel.GASOLINA, 8, 64, true);
     
         //Criação de carro SUVFlex que utiliza gasolina, consome 0 Km/lt, porém este consumo reduz 
         // 1 Km/lt a cada 5000 Km até que se estabiliza em 10 Km/lt. 
@@ -28,21 +27,21 @@ public class App {
         //poder fazer a lógica da redução.
         Carro Econo = new Carro("Econo", TipoCombustivel.GASOLINA, 20, 55);
 
-        System.out.println("Tipos de veiculos:");
+        System.out.println("-------Tipos de veiculos-------");
         System.out.println(basico);
-
+        System.out.println("\n");
         //Adição do carro esportivo em tipos de veículos
         System.out.println(esportivo);
-
+        System.out.println("\n");
         //Adição do carro esportivo em tipos de veículos
         System.out.print(utilitario);
-
+        System.out.println("\n");
         //Adição do carro SUV em tipos de veículos
         System.out.println(SUV);
-
+        System.out.println("\n");
         //Adição do carro SUVFlex em tipos de veículos
         System.out.println(SUVFlex);
-
+        System.out.println("\n");
         System.out.println(Econo);
 
         System.out.println("\n\n----------------");

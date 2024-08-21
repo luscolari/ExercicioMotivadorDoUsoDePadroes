@@ -3,36 +3,40 @@ public class Carro {
     private String modelo;
     private Motor motor;
     private TanqueCombustivel tanque;
-    private int consumoMinimo;
-    private boolean flex;
 
+    //Construtor modificado para poder aceitar Carros Econos e não precisar criar um novo contrutor.
     public Carro(String modelo, TipoCombustivel tipoCombustivel, int consumoMotor, int capacidadeTanque) {
         this.modelo = modelo;
-        motor = new Motor(tipoCombustivel, consumoMotor);
+        if(modelo.equals("Econo")){
+            motor = new Motor (tipoCombustivel, consumoMotor, 0);
+        } else {
+            motor = new Motor(tipoCombustivel, consumoMotor);
+        }
         tanque = new TanqueCombustivel(tipoCombustivel, capacidadeTanque);
     }
 
-    // Construtor para carro com Motor FLEX.
-    public Carro(String modelo, TipoCombustivel tipoCombustivel, int consumo, int capacidadeTanque, boolean flex) {
+    // Construtor para carro com Motor FLEX, aqui foi necessário adiconar um boolean, pois se não teria
+    // as mesmas coisas nos parâmetros.
+    public Carro(String modelo, TipoCombustivel tipoCombustivel, int consumoMotor, int capacidadeTanque, boolean Motorflex) {
         this.modelo = modelo;
-        this.motor = new Motor(tipoCombustivel, consumo);
+        this.motor = new Motor(tipoCombustivel, consumoMotor, Motorflex);
         this.tanque = new TanqueCombustivel(tipoCombustivel, capacidadeTanque);
-        this.flex = flex;
     }
 
-    // Construtor para motores FLEX com consumo específico para gasolina e álcool
-    public Carro(String modelo, int consumoMotorGasolina, int consumoMotorAlcool, int capacidadeTanque) {
+    // Construtor para motores FLEX com consumo específico para gasolina e álcool.
+    //Aqui é necessári o IF para descobrir qual foi o tipo de combustível usado pelo carro para
+    // setar seu consumo.
+    public Carro(String modelo, TipoCombustivel tipoCombustivel, int capacidadeTanque, boolean Motorflex) {
         this.modelo = modelo;
-        this.motor = new Motor(consumoMotorGasolina, consumoMotorAlcool);
+        if(tipoCombustivel.equals(tipoCombustivel.GASOLINA)){
+            motor.setConsumo(8);
+        } else if (tipoCombustivel.equals(tipoCombustivel.ALCOOL)){
+            motor.setConsumo(6);
+        }
+        this.motor = new Motor(tipoCombustivel,motor.getConsumo());
         this.tanque = new TanqueCombustivel(TipoCombustivel.FLEX, capacidadeTanque); // Assumindo tanque FLEX
     }
 
-
-    public Carro(String modelo, TipoCombustivel tipoCombustivel, int consumo, int consumoMinimo, int capacidadeTanque) {
-        this.modelo = modelo;
-        this.motor = new Motor(tipoCombustivel, consumo, consumoMinimo);
-        this.tanque = new TanqueCombustivel(tipoCombustivel, capacidadeTanque);
-    }
 
     public String getModelo() {
         return modelo;

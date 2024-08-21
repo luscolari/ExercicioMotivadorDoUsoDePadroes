@@ -4,10 +4,8 @@ public class Motor {
     private int consumo; // em quilometros por unidade. Ex: Km/Lt
     private int quilometragem;
     private boolean Econo; // criado para marcar se um carro é Econo.
+    private boolean Flex; // criado para marcar se o motor é Flex.
     private int consumoMinimo; // criado para dizer qual o consumo minimo do carro Econo.
-    private int consumoGasolina; // criado para especificar em Flex o consumo de gasolina.
-    private int consumoAlcool; // criado para especificar em Flex o consumo de álcool.
-    private boolean flex; // criado para dizer que o motor é FLEX.
 
     public Motor(TipoCombustivel tipoMotor, int consumo) {
         this.tipoMotor = tipoMotor;
@@ -17,14 +15,9 @@ public class Motor {
     public Motor(TipoCombustivel tipoMotor, int consumo, boolean flex) {
         this.tipoMotor = tipoMotor;
         this.consumo = consumo;
+        Flex = true;
     }
 
-    //Construtor para Carro FLEX com consumo específico para gasolina e álcool
-   public Motor(int consumoGasolina, int consumoAlcool) {
-        this.tipoMotor = TipoCombustivel.FLEX;
-        this.consumoGasolina = consumoGasolina;
-        this.consumoAlcool = consumoAlcool;
-   }
 
     //Construtor para o Motor do Econo que o consumo reduz ao longo que o carro ande.
     public Motor(TipoCombustivel tipoMotor, int consumo, int consumoMinimo) {
@@ -46,6 +39,11 @@ public class Motor {
         return this.consumo;
     }
 
+    //Método para poder setar o consumo do carro Econo;
+    public void setConsumo(int consumo){
+        this.consumo = consumo;
+    }
+
     public TipoCombustivel getTipoMotor(){
         return this.tipoMotor;
     }
@@ -62,8 +60,10 @@ public class Motor {
         quilometragem += distancia;
     }
 
+    //Adiconados se o carro tem motor econômico ou tem motor FLEX.
     @Override
     public String toString() {
-        return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoMotor + "]";
+        return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoMotor + 
+        " Econo? " + Econo + " Flex? " + Flex + "]";
     }
 }
